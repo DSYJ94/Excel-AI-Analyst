@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Excel AI Assistant</title>
+    
+    <!-- Office.js -->
+    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="taskpane.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-content">
+                <span class="header-icon">🤖</span>
+                <span class="header-title">AI Assistant</span>
+            </div>
+            <div class="status-indicator" id="statusIndicator">
+                <span class="status-dot"></span>
+                <span class="status-text">Ready</span>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="section">
+            <h3 class="section-title">Quick Actions</h3>
+            <div class="quick-actions">
+                <button class="action-card template-card" id="createTemplateBtn">
+                    <div class="card-icon">📊</div>
+                    <div class="card-title">Create Template</div>
+                    <div class="card-subtitle">Build complete Excel templates</div>
+                </button>
+                
+                <button class="action-card analyze-card" id="analyzeDataBtn">
+                    <div class="card-icon">🔍</div>
+                    <div class="card-title">Analyze Data</div>
+                    <div class="card-subtitle">Intelligent data insights</div>
+                </button>
+                
+                <button class="action-card formula-card" id="generateFormulaBtn">
+                    <div class="card-icon">⚡</div>
+                    <div class="card-title">Generate Formula</div>
+                    <div class="card-subtitle">Complex Excel formulas</div>
+                </button>
+                
+                <button class="action-card dashboard-card" id="buildDashboardBtn">
+                    <div class="card-icon">📈</div>
+                    <div class="card-title">Build Dashboard</div>
+                    <div class="card-subtitle">Interactive dashboards</div>
+                </button>
+            </div>
+        </div>
+
+        <!-- Chat Interface -->
+        <div class="section">
+            <h3 class="section-title">Chat with AI Agent</h3>
+            <div class="chat-container">
+                <div class="chat-messages" id="chatMessages">
+                    <div class="message ai-message">
+                        <div class="message-avatar">🤖</div>
+                        <div class="message-content">
+                            <div class="message-text">
+                                Hello! I'm your Excel AI Assistant. I can help you:
+                                <ul>
+                                    <li>Create budget templates and financial models</li>
+                                    <li>Analyze data and generate insights</li>
+                                    <li>Build complex formulas and calculations</li>
+                                    <li>Create dashboards and visualizations</li>
+                                </ul>
+                                Type your command below or use the quick action buttons!
+                            </div>
+                            <div class="message-time">Just now</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="chat-input-container">
+                    <textarea 
+                        id="messageInput" 
+                        class="chat-input" 
+                        placeholder="Type your command here... (e.g., 'Create a monthly budget template')"
+                        rows="2"></textarea>
+                    <button id="sendButton" class="send-button">
+                        <span class="send-icon">📤</span>
+                    </button>
+                </div>
+                
+                <div class="input-hint">
+                    Press Ctrl+Enter to send
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings -->
+        <div class="section">
+            <h3 class="section-title">Settings</h3>
+            <div class="settings-container">
+                <div class="setting-group">
+                    <label for="aiProvider" class="setting-label">AI Provider:</label>
+                    <select id="aiProvider" class="setting-select">
+                        <option value="simulation">Simulation (No API key needed)</option>
+                        <option value="openai">OpenAI GPT-4</option>
+                        <option value="anthropic">Anthropic Claude</option>
+                        <option value="google">Google Gemini</option>
+                    </select>
+                </div>
+                
+                <div class="setting-group" id="apiKeyGroup" style="display: none;">
+                    <label for="apiKey" class="setting-label">API Key:</label>
+                    <input type="password" id="apiKey" class="setting-input" placeholder="Enter your API key">
+                    <button id="saveApiKey" class="save-button">Save</button>
+                </div>
+                
+                <div class="setting-group">
+                    <label class="setting-label">Features:</label>
+                    <div class="feature-list">
+                        <div class="feature-item">✅ Template Creation</div>
+                        <div class="feature-item">✅ Data Analysis</div>
+                        <div class="feature-item">✅ Formula Generation</div>
+                        <div class="feature-item">✅ Dashboard Building</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="version">v1.0.0</div>
+            <div class="powered-by">Powered by AI</div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay" style="display: none;">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Processing your request...</div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="taskpane.js"></script>
+</body>
+</html>
+

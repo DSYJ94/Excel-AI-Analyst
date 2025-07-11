@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Excel AI Assistant Commands</title>
+    
+    <!-- Office.js -->
+    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+</head>
+
+<body>
+    <script>
+        Office.onReady(() => {
+            // Commands are handled by the taskpane
+            console.log('Excel AI Assistant Commands loaded');
+        });
+
+        // Function to show the taskpane
+        function showTaskpane(event) {
+            Office.ribbon.requestUpdate({
+                tabs: [{
+                    id: "TabHome",
+                    groups: [{
+                        id: "CommandsGroup",
+                        controls: [{
+                            id: "TaskpaneButton",
+                            enabled: true
+                        }]
+                    }]
+                }]
+            });
+            
+            event.completed();
+        }
+
+        // Function to open AI chat
+        function openAIChat(event) {
+            // This will be handled by the main taskpane
+            Office.addin.showAsTaskpane();
+            event.completed();
+        }
+
+        // Register functions for Office
+        Office.actions.associate("showTaskpane", showTaskpane);
+        Office.actions.associate("openAIChat", openAIChat);
+    </script>
+</body>
+</html>
+
