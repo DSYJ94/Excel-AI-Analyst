@@ -1,9 +1,3 @@
-# GitHub Pages Setup - Solve Localhost Issues
-
-## **Problem**: "localhost sent an invalid response"
-
-Excel web cannot access localhost because it runs in the cloud. The solution is to host your add-in files on a public server. GitHub Pages provides free hosting that works perfectly for Excel add-ins.
-
 ##  **Step-by-Step GitHub Pages Setup**
 
 ### **Step 1: Create GitHub Account (Free)**
